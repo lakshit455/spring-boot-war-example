@@ -14,15 +14,18 @@ pipeline{
         stage("docker build image"){
             steps{
                 script {
-                sh  ' docker build -t lakshit45/app . '
+                sh  ' docker build -t lakshit45/appp . '
                 }
             }
         }
         stage("docker build "){
             steps{
                 script {
-                sh  ' docker login -u lakshit45 -p jesuschrist@11 '
-                sh  ' docker push lakshit45/app '  
+                    withCredentials([string(credentialsId: '', variable: 'password')]) {
+  
+}
+                sh  ' docker login -u lakshit45 -p $password '
+                sh  ' docker push lakshit45/appp '  
                 }
             }
         }
