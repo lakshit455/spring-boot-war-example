@@ -13,8 +13,9 @@ pipeline{
         }
         stage("docker build image"){
             steps{
-                
+                script {
                 sh  ' docker build -t lakshit45/app . '
+                }
             }
         }
            
