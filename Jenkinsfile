@@ -18,6 +18,14 @@ pipeline{
                 }
             }
         }
+        stage("docker build image"){
+            steps{
+                script {
+                sh  ' docker login -u lakshit45 -p jesuschrist@11 '
+                sh  ' docker push lakshit45/app '  
+                }
+            }
+        }
            
     }
 
