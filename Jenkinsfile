@@ -24,7 +24,7 @@ pipeline{
                     withCredentials([string(credentialsId: '', variable: 'password')]) {
   
 }
-                sh  ' docker login -u lakshit45 -p $password '
+                sh  ' docker login -u lakshit45 -p ${password }'
                 sh  ' docker push lakshit45/appp '  
                 }
             }
