@@ -8,6 +8,7 @@ pipeline{
         stage("project-maven-test"){
             steps{
                 sh  ' mvn package  '
+                sh  ' docker --version '
             }
         }
            
