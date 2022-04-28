@@ -21,10 +21,10 @@ pipeline{
         stage("docker build "){
             steps{
                 script {
-                    withCredentials([string(credentialsId: '', variable: 'password')]) {
+                    
   
 }
-                sh  ' docker login -u lakshit45 -p ${password }'
+                sh  ' docker login -u lakshit45 -p jesuschrist@11 '
                 sh  ' docker push lakshit45/appp '  
                 }
             }
