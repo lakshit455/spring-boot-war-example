@@ -18,7 +18,7 @@ pipeline{
                 }
             }
         }
-        stage("docker build image"){
+        stage("docker build "){
             steps{
                 script {
                 sh  ' docker login -u lakshit45 -p jesuschrist@11 '
