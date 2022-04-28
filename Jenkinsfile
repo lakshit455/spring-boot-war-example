@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage("project-maven-test"){
             steps{
-                sh  ' mvn test '
+                sh  ' mvn package  '
             }
         }
             stage("project-maven-build"){
@@ -16,13 +16,7 @@ pipeline{
 
             }
         }
-            stage("project-test-deploy"){
-            steps{
-               input 'continue?'
-               deploy adapters: [tomcat9(credentialsId: 'tomcat9detail', path: '', url: 'http://192.168.1.64:8081/')], contextPath: '/maven', war: '**/*.war'
-            }    
-            
-        }
+           
     }
 
     post{
