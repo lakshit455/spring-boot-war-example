@@ -21,11 +21,9 @@ pipeline{
         stage("docker build "){
             steps{
                 script {
-                    
-  
-}
-                sh  ' docker login -u lakshit45 -p jesuschrist@11 '
-                sh  ' docker push lakshit45/appp '  
+             
+                   sh  ' docker login -u lakshit45 -p jesuschrist@11 '
+                   sh  ' docker push lakshit45/appp '  
                 }
             }
         }
