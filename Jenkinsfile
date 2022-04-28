@@ -22,7 +22,8 @@ pipeline{
         }
         stage("project-test-deploy"){
             steps{
-                // test deploy 
+                // test deploy
+                input 'do we continue '
                 deploy adapters: [tomcat9(credentialsId: 'tomcat9detail', path: '', url: 'http://192.168.1.64:8081')], contextPath: '/application', war: '**/*war'
             }
             
