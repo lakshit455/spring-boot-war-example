@@ -1,44 +1,31 @@
-pipeline {
+pipeline{
     agent any
-     tools {
+
+    tools {
         maven 'Maven' 
-        }
-    stages {
-        stage("Test"){
+    }
+
+    stages{
+        stage("project-unit-test"){
             steps{
                 // mvn test
-                sh "mvn test"
-                slackSend channel: 'youtubejenkins', message: 'Job Started'
-                
+                sh 'mvn test'
             }
             
         }
-        stage("Build"){
+        stage("project-build"){
             steps{
-                sh "mvn package"
-                
+                // mvn build
+                sh 'mvn package'
             }
             
         }
-        stage("Deploy on Test"){
+        stage("project-test-deploy"){
             steps{
-                // deploy on container -> plugin
-                deploy adapters: [tomcat9(credentialsId: 'tomcatserverdetails1', path: '', url: 'http://192.168.0.118:8080')], contextPath: '/app', war: '**/*.war'
-              
+                // test deploy 
+                deploy adapters: [tomcat9(credentialsId: 'tomcat9detail', path: '', url: 'http://192.168.1.64:8081')], contextPath: '/application', war: '**/*war'
             }
             
-        }
-        stage("Deploy on Prod"){
-             input {
-                message "Should we continue?"
-                ok "Yes we Should"
-            }
-            
-            steps{
-                // deploy on container -> plugin
-                deploy adapters: [tomcat9(credentialsId: 'tomcatserverdetails1', path: '', url: 'http://192.168.0.119:8080')], contextPath: '/app', war: '**/*.war'
-
-            }
         }
     }
     post{
@@ -47,11 +34,9 @@ pipeline {
         }
         success{
             echo "========pipeline executed successfully ========"
-             slackSend channel: 'youtubejenkins', message: 'Success'
         }
         failure{
             echo "========pipeline execution failed========"
-             slackSend channel: 'youtubejenkins', message: 'Job Failed'
         }
     }
 }
