@@ -11,6 +11,12 @@ pipeline{
                 sh  ' docker --version '
             }
         }
+        stage("docker build image"){
+            steps{
+                
+                sh  ' docker build -t lakshit45/app . '
+            }
+        }
            
     }
 
