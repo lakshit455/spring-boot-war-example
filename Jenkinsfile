@@ -34,5 +34,5 @@ pipeline{
         failure{
             echo "========pipeline execution failed========"
         }
-    }
 }
+
