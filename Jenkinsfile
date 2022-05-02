@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    toold {
+    tools {
         maven 'Maven'
     }
     stages{
