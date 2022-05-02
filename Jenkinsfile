@@ -18,7 +18,7 @@ pipeline{
             }
             stage("maven deploy"){
             steps{
-                deploy adapters: [tomcat9(credentialsId: 'crentials', path: '', url: 'http://192.168.1.64:8081')], contextPath: '/mvnserver', war: '**/*war'
+               deploy adapters: [tomcat9(credentialsId: 'der', path: '', url: 'http://192.168.1.64:8081/')], contextPath: '/bgveuibvieucjit', war: '**/*.war'
             }
            
             }
